@@ -11,7 +11,6 @@ Installation :
 
 For admin login :
 1. Open URL - "localhost/nmobile-voting/admin
-
 admin login details : 
 username : cifalshaul
 password : cifal@3101
