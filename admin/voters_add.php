@@ -11,8 +11,9 @@
 			move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$filename);	
 		}
 		//generate voters id
-		$set = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-		$voter = substr(str_shuffle($set), 0, 15);
+		$set1 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$set2 = '123456789';
+		$voter = substr(str_shuffle($set1), 0, 3).substr(str_shuffle($set2), 0, 7);
 
 		$sql = "INSERT INTO voters (voters_id, password, firstname, lastname, photo, position_id, voted) VALUES ('$voter', '$password', '$firstname', '$lastname', '$filename', $position, 0)";
 		if($conn->query($sql)){
