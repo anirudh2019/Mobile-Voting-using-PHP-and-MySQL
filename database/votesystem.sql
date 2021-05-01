@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 01, 2021 at 06:15 PM
+-- Generation Time: May 01, 2021 at 06:41 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -56,7 +56,6 @@ CREATE TABLE `candidates` (
   `firstname` varchar(30) NOT NULL,
   `lastname` varchar(30) NOT NULL,
   `photo` varchar(150) NOT NULL,
-  `platform` text NOT NULL,
   `votes` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -64,22 +63,22 @@ CREATE TABLE `candidates` (
 -- Dumping data for table `candidates`
 --
 
-INSERT INTO `candidates` (`id`, `position_id`, `firstname`, `lastname`, `photo`, `platform`, `votes`) VALUES
-(27, 11, 'Anirudh', 'Simhachalam', '', '', 0),
-(28, 11, 'cifal', 'shaul', '', '', 1),
-(29, 11, 'Ajay', 'Nikhil', '', '', 0),
-(30, 12, 'Sainath', 'B', '', '', 0),
-(31, 12, 'Prashanth', 'Kota', '', '', 2),
-(32, 12, 'Suraj', 'U', '', '', 0),
-(33, 13, 'srinidh', 'Y', '', '', 0),
-(34, 13, 'sravan', 'B', '', '', 0),
-(35, 13, 'krishna', 'Prakash', '', '', 0),
-(36, 14, 'Gopal', 'babu', '', '', 0),
-(37, 14, 'gopi', 'krishna', '', '', 0),
-(38, 14, 'Jayram', 'Naik', '', '', 0),
-(39, 14, 'Abhinav ', 'Kathuri', '', '', 0),
-(40, 14, 'Janiki', 'Ram', '', '', 0),
-(41, 13, 'Pranav', 'sai', '', '', 0);
+INSERT INTO `candidates` (`id`, `position_id`, `firstname`, `lastname`, `photo`, `votes`) VALUES
+(27, 11, 'Anirudh', 'Simhachalam', '', 0),
+(28, 11, 'cifal', 'shaul', '', 1),
+(29, 11, 'Ajay', 'Nikhil', '', 0),
+(30, 12, 'Sainath', 'B', '', 0),
+(31, 12, 'Prashanth', 'Kota', '', 2),
+(32, 12, 'Suraj', 'U', '', 0),
+(33, 13, 'srinidh', 'Y', '', 0),
+(34, 13, 'sravan', 'B', '', 0),
+(35, 13, 'krishna', 'Prakash', '', 0),
+(36, 14, 'Gopal', 'babu', '', 0),
+(37, 14, 'gopi', 'krishna', '', 0),
+(38, 14, 'Jayram', 'Naik', '', 0),
+(39, 14, 'Abhinav ', 'Kathuri', '', 0),
+(40, 14, 'Janiki', 'Ram', '', 0),
+(41, 13, 'Pranav', 'sai', '', 0);
 
 -- --------------------------------------------------------
 
