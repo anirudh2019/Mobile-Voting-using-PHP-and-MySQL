@@ -14,8 +14,8 @@ For admin login :
 
 admin login details : 
 
-username : cifalshaul
+username : admin
 
-password : cifal@3101
+password : admin
 
 
