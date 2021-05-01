@@ -57,7 +57,7 @@
                 echo "<h3>".$query->num_rows."</h3>";
               ?>
 
-              <p>No. of Positions</p>
+              <p>No. of Polls</p>
             </div>
             <div class="icon">
               <i class="fa fa-tasks"></i>
@@ -128,11 +128,11 @@
             <div class='col-sm-6'>
               <div class='box box-solid'>
                 <div class='box-header with-border'>
-                  <h4 class='box-title'><b>".$row['description']."</b></h4>
+                  <h4 class='box-title'><b>".$row['wardname']."</b></h4>
                 </div>
                 <div class='box-body'>
                   <div class='chart'>
-                    <canvas id='".slugify($row['description'])."' style='height:200px'></canvas>
+                    <canvas id='".slugify($row['wardname'])."' style='height:200px'></canvas>
                   </div>
                 </div>
               </div>
@@ -172,8 +172,8 @@
     <script>
     $(function(){
       var rowid = '<?php echo $row['id']; ?>';
-      var description = '<?php echo slugify($row['description']); ?>';
-      var barChartCanvas = $('#'+description).get(0).getContext('2d')
+      var wardname = '<?php echo slugify($row['wardname']); ?>';
+      var barChartCanvas = $('#'+wardname).get(0).getContext('2d')
       var barChart = new Chart(barChartCanvas)
       var barChartData = {
         labels  : <?php echo $carray; ?>,

@@ -52,7 +52,7 @@
               <table id="example1" class="table table-bordered">
                 <thead>
                   <th class="hidden"></th>
-                  <th>Position</th>
+                  <th>Poll</th>
                   <th>Photo</th>
                   <th>Firstname</th>
                   <th>Lastname</th>
@@ -68,7 +68,7 @@
                       echo "
                         <tr>
                           <td class='hidden'></td>
-                          <td>".$row['description']."</td>
+                          <td>".$row['wardname']."</td>
                           <td>
                             <img src='".$image."' width='30px' height='30px'>
                             <a href='#edit_photo' data-toggle='modal' class='pull-right photo' data-id='".$row['canid']."'><span class='fa fa-edit'></span></a>

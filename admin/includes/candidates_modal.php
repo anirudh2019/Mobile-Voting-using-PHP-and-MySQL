@@ -29,21 +29,21 @@
             <div class="modal-body">
               <form class="form-horizontal" method="POST" action="candidates_add.php" enctype="multipart/form-data">
                 <div class="form-group">
-                    <label for="firstname" class="col-sm-3 control-label">Firstname</label>
+                    <label for="firstname" class="col-sm-3 control-label">First Name</label>
 
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="firstname" name="firstname" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="lastname" class="col-sm-3 control-label">Lastname</label>
+                    <label for="lastname" class="col-sm-3 control-label">Last Name</label>
 
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="lastname" name="lastname" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="position" class="col-sm-3 control-label">Position</label>
+                    <label for="position" class="col-sm-3 control-label">Poll</label>
 
                     <div class="col-sm-9">
                       <select class="form-control" id="position" name="position" required>
@@ -53,7 +53,7 @@
                           $query = $conn->query($sql);
                           while($row = $query->fetch_assoc()){
                             echo "
-                              <option value='".$row['id']."'>".$row['description']."</option>
+                              <option value='".$row['id']."'>".$row['wardname']."</option>
                             ";
                           }
                         ?>
@@ -111,7 +111,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="edit_position" class="col-sm-3 control-label">Position</label>
+                    <label for="edit_position" class="col-sm-3 control-label">Poll</label>
 
                     <div class="col-sm-9">
                       <select class="form-control" id="edit_position" name="position" required>
@@ -121,7 +121,7 @@
                           $query = $conn->query($sql);
                           while($row = $query->fetch_assoc()){
                             echo "
-                              <option value='".$row['id']."'>".$row['description']."</option>
+                              <option value='".$row['id']."'>".$row['wardname']."</option>
                             ";
                           }
                         ?>
