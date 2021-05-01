@@ -57,6 +57,7 @@
                   <th>Voters ID</th>
                   <th>Poll</th>
                   <th>Tools</th>
+                  <th>Voted?</th>
                 </thead>
                 <tbody>
                   <?php
@@ -64,6 +65,7 @@
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       $image = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
+                      $voted = ($row["voted"]) ? "Yes" : "No";
                       echo "
                         <tr>
                           <td>".$row['firstname']."</td>
@@ -78,6 +80,7 @@
                             <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['voterid']."'><i class='fa fa-edit'></i> Edit</button>
                             <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['voterid']."'><i class='fa fa-trash'></i> Delete</button>
                           </td>
+                          <td>".$voted."</td>
                         </tr>
                       ";
                     }

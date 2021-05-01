@@ -56,8 +56,8 @@
                   <th>Photo</th>
                   <th>Firstname</th>
                   <th>Lastname</th>
-                  <th>Platform</th>
                   <th>Tools</th>
+                  <th>Votes count</th>
                 </thead>
                 <tbody>
                   <?php
@@ -75,11 +75,11 @@
                           </td>
                           <td>".$row['firstname']."</td>
                           <td>".$row['lastname']."</td>
-                          <td><a href='#platform' data-toggle='modal' class='btn btn-info btn-sm btn-flat platform' data-id='".$row['canid']."'><i class='fa fa-search'></i> View</a></td>
                           <td>
                             <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['canid']."'><i class='fa fa-edit'></i> Edit</button>
                             <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['canid']."'><i class='fa fa-trash'></i> Delete</button>
                           </td>
+                          <td>".$row['votes']." </td>
                         </tr>
                       ";
                     }

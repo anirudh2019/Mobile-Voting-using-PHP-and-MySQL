@@ -55,13 +55,10 @@
 			        </div>
 
 				    <?php
-				    	$sql = "SELECT * FROM votes WHERE voters_id = '".$voter['id']."'";
-				    	$vquery = $conn->query($sql);
-				    	if($vquery->num_rows > 0){
+				    	if($voter['voted']){
 				    		?>
 				    		<div class="text-center">
 					    		<h3>You have already voted for this election.</h3>
-					    		<a href="#view" data-toggle="modal" class="btn btn-flat btn-primary btn-lg">View Ballot</a>
 					    	</div>
 				    		<?php
 				    	}
@@ -73,13 +70,13 @@
 				        			include 'includes/slugify.php';
 
 				        			$candidate = '';
-				        			$sql = "SELECT * FROM positions ORDER BY priority ASC";
+				        			$sql = "SELECT * FROM positions WHERE id= '".$voter['position_id']."' ";
 									$query = $conn->query($sql);
-									while($row = $query->fetch_assoc()){
+									$row = $query->fetch_assoc();
 										$sql = "SELECT * FROM candidates WHERE position_id='".$row['id']."'";
 										$cquery = $conn->query($sql);
 										while($crow = $cquery->fetch_assoc()){
-											$slug = slugify($row['description']);
+											$slug = slugify($row['wardname']);
 											$checked = '';
 											if(isset($_SESSION['post'][$slug])){
 												$value = $_SESSION['post'][$slug];
@@ -97,28 +94,28 @@
 													}
 												}
 											}
-											$input = ($row['max_vote'] > 1) ? '<input type="checkbox" class="flat-red '.$slug.'" name="'.$slug."[]".'" value="'.$crow['id'].'" '.$checked.'>' : '<input type="radio" class="flat-red '.$slug.'" name="'.slugify($row['description']).'" value="'.$crow['id'].'" '.$checked.'>';
-											$image = (!empty($crow['photo'])) ? 'images/'.$crow['photo'] : 'images/profile.jpg';
-											$candidate .= '
-												<li>
-													'.$input.'<button type="button" class="btn btn-primary btn-sm btn-flat clist platform" data-platform="'.$crow['platform'].'" data-fullname="'.$crow['firstname'].' '.$crow['lastname'].'"><i class="fa fa-search"></i> Platform</button><img src="'.$image.'" height="100px" width="100px" class="clist"><span class="cname clist">'.$crow['firstname'].' '.$crow['lastname'].'</span>
-												</li>
-											';
-										}
+											
+		$input = '<input type="radio" class="flat-red '.$slug.'" name="'.slugify($row['wardname']).'" value="'.$crow['id'].'" '.$checked.'>';
+				
+		$image = (!empty($crow['photo'])) ? 'images/'.$crow['photo'] : 'images/profile.jpg';
+				                                                 
+                $candidate .= '<li>'.$input.'<img src="'.$image.'" height="100px" width="100px" class="clist"> <span class="cname clist">'.$crow['firstname'].' '.$crow['lastname'].'</span>   </li> ';
+						
+			}
 
-										$instruct = ($row['max_vote'] > 1) ? 'You may select up to '.$row['max_vote'].' candidates' : 'Select only one candidate';
+		$instruct =  'Select only one candidate';
 
 										echo '
 											<div class="row">
 												<div class="col-xs-12">
 													<div class="box box-solid" id="'.$row['id'].'">
 														<div class="box-header with-border">
-															<h3 class="box-title"><b>'.$row['description'].'</b></h3>
+															<h3 class="box-title"><b>'.$row['wardname'].'</b></h3>
 														</div>
 														<div class="box-body">
 															<p>'.$instruct.'
 																<span class="pull-right">
-																	<button type="button" class="btn btn-success btn-sm btn-flat reset" data-desc="'.slugify($row['description']).'"><i class="fa fa-refresh"></i> Reset</button>
+																	<button type="button" class="btn btn-success btn-sm btn-flat reset" data-desc="'.slugify($row['wardname']).'"><i class="fa fa-refresh"></i> Reset</button>
 																</span>
 															</p>
 															<div id="candidate_list">
@@ -134,7 +131,7 @@
 
 										$candidate = '';
 
-									}	
+										
 
 				        		?>
 				        		<div class="text-center">

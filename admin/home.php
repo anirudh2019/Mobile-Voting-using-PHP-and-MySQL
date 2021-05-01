@@ -162,9 +162,10 @@
     $varray = array();
     while($crow = $cquery->fetch_assoc()){
       array_push($carray, $crow['firstname']);
-      $sql = "SELECT * FROM votes WHERE candidate_id = '".$crow['id']."'";
+      $sql = "SELECT votes FROM candidates WHERE id = '".$crow['id']."'";
       $vquery = $conn->query($sql);
-      array_push($varray, $vquery->num_rows);
+      $votes = $vquery->num_rows;//fetch_assoc();
+      array_push($varray, $votes);
     }
     $carray = json_encode($carray);
     $varray = json_encode($varray);
@@ -227,4 +228,3 @@
   }
 ?>
 </body>
-</html>

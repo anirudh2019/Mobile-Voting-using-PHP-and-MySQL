@@ -14,7 +14,7 @@
 		$set = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		$voter = substr(str_shuffle($set), 0, 15);
 
-		$sql = "INSERT INTO voters (voters_id, password, firstname, lastname, photo, position_id) VALUES ('$voter', '$password', '$firstname', '$lastname', '$filename', $position)";
+		$sql = "INSERT INTO voters (voters_id, password, firstname, lastname, photo, position_id, voted) VALUES ('$voter', '$password', '$firstname', '$lastname', '$filename', $position, 0)";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Voter added successfully';
 		}
