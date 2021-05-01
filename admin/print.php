@@ -10,7 +10,7 @@
         	$id = $row['id'];
         	$contents .= '
         		<tr>
-        			<td colspan="2" align="center" style="font-size:15px;"><b>'.$row['description'].'</b></td>
+        			<td colspan="2" align="center" style="font-size:15px;"><b>'.$row['wardname'].'</b></td>
         		</tr>
         		<tr>
         			<td width="80%"><b>Candidates</b></td>
@@ -27,7 +27,7 @@
 
       			$contents .= '
       				<tr>
-      					<td>'.$crow['lastname'].", ".$crow['firstname'].'</td>
+      					<td>'.$crow['firstname']." ".$crow['lastname'].'</td>
       					<td>'.$votes.'</td>
       				</tr>
       			';
@@ -66,6 +66,7 @@
    	$content .= generateRow($conn);  
     $content .= '</table>';  
     $pdf->writeHTML($content);  
+    ob_end_clean();
     $pdf->Output('election_result.pdf', 'I');
 
 ?>

@@ -5,6 +5,7 @@
 		$firstname = $_POST['firstname'];
 		$lastname = $_POST['lastname'];
 		$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+		$position = $_POST['position'];
 		$filename = $_FILES['photo']['name'];
 		if(!empty($filename)){
 			move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$filename);	
@@ -13,7 +14,7 @@
 		$set = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		$voter = substr(str_shuffle($set), 0, 15);
 
-		$sql = "INSERT INTO voters (voters_id, password, firstname, lastname, photo) VALUES ('$voter', '$password', '$firstname', '$lastname', '$filename')";
+		$sql = "INSERT INTO voters (voters_id, password, firstname, lastname, photo, position_id) VALUES ('$voter', '$password', '$firstname', '$lastname', '$filename', $position)";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Voter added successfully';
 		}

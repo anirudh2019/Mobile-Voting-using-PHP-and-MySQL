@@ -55,11 +55,12 @@
                   <th>Lastname</th>
                   <th>Photo</th>
                   <th>Voters ID</th>
+                  <th>Poll</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT * FROM voters";
+                    $sql = "SELECT *, voters.id AS voterid FROM voters LEFT JOIN positions ON positions.id=voters.position_id ORDER BY positions.priority ASC";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
                       $image = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
@@ -69,12 +70,13 @@
                           <td>".$row['lastname']."</td>
                           <td>
                             <img src='".$image."' width='30px' height='30px'>
-                            <a href='#edit_photo' data-toggle='modal' class='pull-right photo' data-id='".$row['id']."'><span class='fa fa-edit'></span></a>
+                            <a href='#edit_photo' data-toggle='modal' class='pull-right photo' data-id='".$row['voterid']."'><span class='fa fa-edit'></span></a>
                           </td>
                           <td>".$row['voters_id']."</td>
+                          <td>".$row['wardname']."</td>
                           <td>
-                            <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
-                            <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                            <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['voterid']."'><i class='fa fa-edit'></i> Edit</button>
+                            <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['voterid']."'><i class='fa fa-trash'></i> Delete</button>
                           </td>
                         </tr>
                       ";
