@@ -164,8 +164,8 @@
       array_push($carray, $crow['firstname']);
       $sql = "SELECT votes FROM candidates WHERE id = '".$crow['id']."'";
       $vquery = $conn->query($sql);
-      $votes = $vquery->num_rows;//fetch_assoc();
-      array_push($varray, $votes);
+      $votes = $vquery->fetch_object();
+      array_push($varray, $votes->votes);
     }
     $carray = json_encode($carray);
     $varray = json_encode($varray);
