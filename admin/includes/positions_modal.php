@@ -82,7 +82,7 @@
               <form class="form-horizontal" method="POST" action="positions_delete.php">
                 <input type="hidden" class="id" name="id">
                 <div class="text-center">
-                    <p>DELETE POSITION</p>
+                    <p>DELETE Poll</p>
                     <h2 class="bold description"></h2>
                 </div>
             </div>

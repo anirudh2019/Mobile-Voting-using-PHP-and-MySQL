@@ -13,7 +13,7 @@
 		
 		$sql = "INSERT INTO positions (wardname, dist_name, priority) VALUES ('$wardname', '$dist_name', '$priority')";
 		if($conn->query($sql)){
-			$_SESSION['success'] = 'Position added successfully';
+			$_SESSION['success'] = 'Poll added successfully';
 		}
 		else{
 			$_SESSION['error'] = $conn->error;

@@ -8,7 +8,7 @@
 
 		$sql = "UPDATE positions SET wardname = '$wardname', dist_name = '$dist_name' WHERE id = '$id'";
 		if($conn->query($sql)){
-			$_SESSION['success'] = 'Position updated successfully';
+			$_SESSION['success'] = 'Poll updated successfully';
 		}
 		else{
 			$_SESSION['error'] = $conn->error;

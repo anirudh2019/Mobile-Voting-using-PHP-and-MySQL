@@ -3,9 +3,9 @@
 
 	if(isset($_POST['delete'])){
 		$id = $_POST['id'];
-		$sql = "DELETE FROM positions WHERE id = '$id'";
+		$sql = "DELETE FROM parties WHERE id = '$id'";
 		if($conn->query($sql)){
-			$_SESSION['success'] = 'Poll deleted successfully';
+			$_SESSION['success'] = 'Party deleted successfully';
 		}
 		else{
 			$_SESSION['error'] = $conn->error;
@@ -15,6 +15,6 @@
 		$_SESSION['error'] = 'Select item to delete first';
 	}
 
-	header('location: positions.php');
+	header('location: parties.php');
 	
 ?>

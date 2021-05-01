@@ -5,67 +5,31 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Add New Candidate</b></h4>
+              <h4 class="modal-title"><b>Add New Party</b></h4>
             </div>
             <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="candidates_add.php" enctype="multipart/form-data">
+              <form class="form-horizontal" method="POST" action="parties_add.php">
                 <div class="form-group">
-                    <label for="firstname" class="col-sm-3 control-label">First Name</label>
+                    <label for="partyname" class="col-sm-3 control-label">Name</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="firstname" name="firstname" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="lastname" class="col-sm-3 control-label">Last Name</label>
-
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="lastname" name="lastname" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="position" class="col-sm-3 control-label">Poll</label>
-
-                    <div class="col-sm-9">
-                      <select class="form-control" id="position" name="position" required>
-                        <option value="" selected>- Select -</option>
-                        <?php
-                          $sql = "SELECT * FROM positions";
-                          $query = $conn->query($sql);
-                          while($row = $query->fetch_assoc()){
-                            echo "
-                              <option value='".$row['id']."'>".$row['wardname']."</option>
-                            ";
-                          }
-                        ?>
-                      </select>
+                      <input type="text" class="form-control" id="partyname" name="partyname" required>
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="parties" class="col-sm-3 control-label">Party</label>
+                    <label for="leader" class="col-sm-3 control-label">Leader Name</label>
 
                     <div class="col-sm-9">
-                      <select class="form-control" id="parties" name="parties" required>
-                        <option value="" selected>- Select -</option>
-                        <?php
-                          $sql = "SELECT * FROM parties";
-                          $query = $conn->query($sql);
-                          while($row = $query->fetch_assoc()){
-                            echo "
-                              <option value='".$row['id']."'>".$row['name']."</option>
-                            ";
-                          }
-                        ?>
-                      </select>
+                      <input type="text" class="form-control" id="leader" name="leader" required>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
-                    <label for="photo" class="col-sm-3 control-label">Photo</label>
+                    <label for="photo" class="col-sm-3 control-label">Logo</label>
 
                     <div class="col-sm-9">
-                      <input type="file" id="photo" name="photo">
+                      <input type="file" id="photo" name="photo" required>
                     </div>
                 </div>
                 
@@ -86,44 +50,25 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Edit Voter</b></h4>
+              <h4 class="modal-title"><b>Edit Party</b></h4>
             </div>
             <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="candidates_edit.php">
+              <form class="form-horizontal" method="POST" action="parties_edit.php">
                 <input type="hidden" class="id" name="id">
                 <div class="form-group">
-                    <label for="edit_firstname" class="col-sm-3 control-label">Firstname</label>
+                    <label for="edit_partyname" class="col-sm-3 control-label">Party Name</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="edit_firstname" name="firstname" required>
+                      <input type="text" class="form-control" id="edit_partyname" name="partyname">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="edit_lastname" class="col-sm-3 control-label">Lastname</label>
+                    <label for="edit_leader" class="col-sm-3 control-label">Leader Name</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="edit_lastname" name="lastname" required>
+                      <input type="text" class="form-control" id="edit_leader" name="leader">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="edit_position" class="col-sm-3 control-label">Poll</label>
-
-                    <div class="col-sm-9">
-                      <select class="form-control" id="edit_position" name="position" required>
-                        <option value="" selected id="posselect"></option>
-                        <?php
-                          $sql = "SELECT * FROM positions";
-                          $query = $conn->query($sql);
-                          while($row = $query->fetch_assoc()){
-                            echo "
-                              <option value='".$row['id']."'>".$row['wardname']."</option>
-                            ";
-                          }
-                        ?>
-                      </select>
-                    </div>
-                </div>
-                
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
@@ -144,11 +89,11 @@
               <h4 class="modal-title"><b>Deleting...</b></h4>
             </div>
             <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="candidates_delete.php">
+              <form class="form-horizontal" method="POST" action="parties_delete.php">
                 <input type="hidden" class="id" name="id">
                 <div class="text-center">
-                    <p>DELETE CANDIDATE</p>
-                    <h2 class="bold fullname"></h2>
+                    <p>DELETE Party</p>
+                    <h2 class="bold description"></h2>
                 </div>
             </div>
             <div class="modal-footer">
@@ -160,7 +105,8 @@
     </div>
 </div>
 
-<!-- Update Photo -->
+
+<!-- Update logo -->
 <div class="modal fade" id="edit_photo">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -170,10 +116,10 @@
               <h4 class="modal-title"><b><span class="fullname"></span></b></h4>
             </div>
             <div class="modal-body">
-              <form class="form-horizontal" method="POST" action="candidates_photo.php" enctype="multipart/form-data">
+              <form class="form-horizontal" method="POST" action="parties_logo.php" enctype="multipart/form-data">
                 <input type="hidden" class="id" name="id">
                 <div class="form-group">
-                    <label for="photo" class="col-sm-3 control-label">Photo</label>
+                    <label for="photo" class="col-sm-3 control-label">Logo</label>
 
                     <div class="col-sm-9">
                       <input type="file" id="photo" name="photo" required>
@@ -188,7 +134,4 @@
         </div>
     </div>
 </div>
-
-
-
      

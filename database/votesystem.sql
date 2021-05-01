@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 01, 2021 at 06:41 PM
+-- Generation Time: May 01, 2021 at 09:58 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -56,29 +56,54 @@ CREATE TABLE `candidates` (
   `firstname` varchar(30) NOT NULL,
   `lastname` varchar(30) NOT NULL,
   `photo` varchar(150) NOT NULL,
-  `votes` int(11) NOT NULL
+  `votes` int(11) NOT NULL,
+  `parties_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `candidates`
 --
 
-INSERT INTO `candidates` (`id`, `position_id`, `firstname`, `lastname`, `photo`, `votes`) VALUES
-(27, 11, 'Anirudh', 'Simhachalam', '', 0),
-(28, 11, 'cifal', 'shaul', '', 1),
-(29, 11, 'Ajay', 'Nikhil', '', 0),
-(30, 12, 'Sainath', 'B', '', 0),
-(31, 12, 'Prashanth', 'Kota', '', 2),
-(32, 12, 'Suraj', 'U', '', 0),
-(33, 13, 'srinidh', 'Y', '', 0),
-(34, 13, 'sravan', 'B', '', 0),
-(35, 13, 'krishna', 'Prakash', '', 0),
-(36, 14, 'Gopal', 'babu', '', 0),
-(37, 14, 'gopi', 'krishna', '', 0),
-(38, 14, 'Jayram', 'Naik', '', 0),
-(39, 14, 'Abhinav ', 'Kathuri', '', 0),
-(40, 14, 'Janiki', 'Ram', '', 0),
-(41, 13, 'Pranav', 'sai', '', 0);
+INSERT INTO `candidates` (`id`, `position_id`, `firstname`, `lastname`, `photo`, `votes`, `parties_id`) VALUES
+(27, 11, 'Anirudh', 'Simhachalam', '', 0, 1),
+(28, 11, 'cifal', 'shaul', '', 1, 2),
+(29, 11, 'Ajay', 'Nikhil', '', 0, 3),
+(30, 12, 'Sainath', 'B', '', 0, 4),
+(31, 12, 'Prashanth', 'Kota', '', 2, 2),
+(32, 12, 'Suraj', 'U', '', 0, 1),
+(33, 13, 'srinidh', 'Y', '', 0, 2),
+(34, 13, 'sravan', 'B', '', 0, 4),
+(35, 13, 'krishna', 'Prakash', '', 0, 3),
+(36, 14, 'Gopal', 'babu', '', 0, 4),
+(37, 14, 'gopi', 'krishna', '', 0, 2),
+(38, 12, 'Jayram', 'Naik', '', 0, 3),
+(39, 14, 'Abhinav ', 'Kathuri', '', 0, 1),
+(40, 14, 'Janiki', 'Ram', '', 0, 3),
+(41, 13, 'Pranav', 'sai', '', 0, 1),
+(42, 11, 'Harsha', 'Vardhan', '070fdd4d-718f-4854-a223-e003ca59cde8.jpg', 0, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `parties`
+--
+
+CREATE TABLE `parties` (
+  `id` int(11) NOT NULL,
+  `name` varchar(30) CHARACTER SET latin1 NOT NULL,
+  `leader` varchar(50) CHARACTER SET latin1 NOT NULL,
+  `logo` varchar(100) CHARACTER SET latin1 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `parties`
+--
+
+INSERT INTO `parties` (`id`, `name`, `leader`, `logo`) VALUES
+(1, 'BJP', 'Bandi Sanjay Kumar', 'bjp-logo-1-1.png'),
+(2, 'YCP', 'Y.S.Jagan Mohan Reddy', 'ycp fan.jpeg'),
+(3, 'TRS', 'K.C.R', 'TRS-Party-Symbol-CAR1.jpg'),
+(4, 'INC', 'N. Uttam Kumar Reddy', 'congress.png');
 
 -- --------------------------------------------------------
 
@@ -98,8 +123,8 @@ CREATE TABLE `positions` (
 --
 
 INSERT INTO `positions` (`id`, `wardname`, `dist_name`, `priority`) VALUES
-(11, 'warangal east', 'Warangal Urban', 1),
-(12, 'warangal west', 'Warangal Urban', 2),
+(11, 'warangal east', 'Warangal Urban', 2),
+(12, 'warangal west', 'Warangal Urban', 1),
 (13, 'peerzadiguda', 'Hyderabad', 3),
 (14, 'Kukatpally', 'Hyderabad', 4);
 
@@ -148,6 +173,12 @@ ALTER TABLE `candidates`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `parties`
+--
+ALTER TABLE `parties`
+  ADD PRIMARY KEY (`id`) KEY_BLOCK_SIZE=15 USING BTREE;
+
+--
 -- Indexes for table `positions`
 --
 ALTER TABLE `positions`
@@ -173,7 +204,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `candidates`
 --
 ALTER TABLE `candidates`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT for table `parties`
+--
+ALTER TABLE `parties`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `positions`

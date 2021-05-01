@@ -5,12 +5,13 @@
 		$firstname = $_POST['firstname'];
 		$lastname = $_POST['lastname'];
 		$position = $_POST['position'];
+		$party = $_POST['parties'];		
 		$filename = $_FILES['photo']['name'];
 		if(!empty($filename)){
 			move_uploaded_file($_FILES['photo']['tmp_name'], '../images/'.$filename);	
 		}
 
-	$sql = "INSERT INTO candidates (position_id, firstname, lastname, photo, votes) VALUES ('$position', '$firstname', '$lastname', '$filename',0)";
+	$sql = "INSERT INTO candidates (position_id, firstname, lastname, photo, votes, parties_id) VALUES ('$position', '$firstname', '$lastname', '$filename',0, $party)";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Candidate added successfully';
 		}

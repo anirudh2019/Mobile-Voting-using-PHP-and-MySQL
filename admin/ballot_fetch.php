@@ -14,10 +14,11 @@
 	while($row = $query->fetch_assoc()){
 		$input = '<input type="radio" class="flat-red '.slugify($row['wardname']).'" name="'.slugify($row['wardname']).'">';
 
-		$sql = "SELECT * FROM candidates WHERE position_id='".$row['id']."'";
+		$sql = "SELECT *, parties.id AS partyID FROM candidates INNER JOIN parties ON parties.id = candidates.parties_id WHERE position_id='".$row['id']."'";
+		
 		$cquery = $conn->query($sql);
 		while($crow = $cquery->fetch_assoc()){
-			$image = (!empty($crow['photo'])) ? '../images/'.$crow['photo'] : '../images/profile.jpg';
+			$image = (!empty($crow['logo'])) ? '../images/parties/'.$crow['logo'] : '../images/favicon.png';
 			$candidate .= '
 				<li>
 					'.$input.'<img src="'.$image.'" height="100px" width="100px" class="clist"><span class="cname clist">'.$crow['firstname'].' '.$crow['lastname'].'</span>

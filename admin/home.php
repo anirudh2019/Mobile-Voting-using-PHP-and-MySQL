@@ -156,13 +156,15 @@
   $sql = "SELECT * FROM positions ORDER BY priority ASC";
   $query = $conn->query($sql);
   while($row = $query->fetch_assoc()){
-    $sql = "SELECT * FROM candidates WHERE position_id = '".$row['id']."'";
+    $sql = "SELECT *, candidates.id AS canid FROM candidates INNER JOIN parties ON parties.id = candidates.parties_id WHERE position_id='".$row['id']."'";
+    //"SELECT * FROM candidates WHERE position_id='".$row['id']."'";
+    //"SELECT *, parties.id AS partyID FROM candidates INNER JOIN parties ON parties.id = candidates.parties_id WHERE position_id='".$row['id']."'";
     $cquery = $conn->query($sql);
     $carray = array();
     $varray = array();
     while($crow = $cquery->fetch_assoc()){
-      array_push($carray, $crow['firstname']);
-      $sql = "SELECT votes FROM candidates WHERE id = '".$crow['id']."'";
+      array_push($carray, $crow['name']);
+      $sql = "SELECT votes FROM candidates WHERE id = '".$crow['canid']."'";
       $vquery = $conn->query($sql);
       $votes = $vquery->fetch_object();
       array_push($varray, $votes->votes);

@@ -11,11 +11,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Candidates List
+        Parties
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Candidates</li>
+        <li class="active">Parties</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -52,36 +52,30 @@
               <table id="example1" class="table table-bordered">
                 <thead>
                   <th class="hidden"></th>
-                  <th>Photo</th>
-                  <th>Name</th>	
-                  <th>Party</th>
-                  <th>Poll</th>
-                  <th>Tools</th>
-                  <th>Votes count</th>
+                  <th>Party Name</th>
+                  <th>Leader</th>
+                  <th>logo</th>
                 </thead>
                 <tbody>
                   <?php
-                   // $sql = "SELECT *, candidates.id AS canid FROM candidates LEFT JOIN positions ON positions.id=candidates.position_id ORDER BY positions.priority ASC";
-                    $sql = "SELECT candidates.*, candidates.id AS canid, positions.wardname, parties.name FROM ((candidates INNER JOIN positions ON positions.id=candidates.position_id ) INNER JOIN parties ON parties.id = candidates.parties_id) ORDER BY candidates.firstname ASC";
-                    
+                    $sql = "SELECT * FROM parties ORDER BY name ASC";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
-                      $image = (!empty($row['photo'])) ? '../images/'.$row['photo'] : '../images/profile.jpg';
+                      $image = (!empty($row['logo'])) ? '../images/parties/'.$row['logo'] : '../images/favicon.png';                    
                       echo "
                         <tr>
                           <td class='hidden'></td>
-                          <td>
-                            <img src='".$image."' width='30px' height='30px'>
-                            <a href='#edit_photo' data-toggle='modal' class='pull-right photo' data-id='".$row['canid']."'><span class='fa fa-edit'></span></a>
-                          </td>                          
-                          <td>".$row['firstname']." ".$row['lastname']."</td>
                           <td>".$row['name']."</td>
-                          <td>".$row['wardname']."</td>                          
+                          <td>".$row['leader']."</td>
                           <td>
-                            <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['canid']."'><i class='fa fa-edit'></i> Edit</button>
-                            <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['canid']."'><i class='fa fa-trash'></i> Delete</button>
+                            <img src='".$image."' width='70px' height='70px'>
+                            <a href='#edit_photo' data-toggle='modal' class='pull-right photo' data-id='".$row['id']."'><span class='fa fa-edit'></span></a>
                           </td>
-                          <td>".$row['votes']." </td>
+                           
+                          <td>
+                            <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
+                            <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
+                          </td>
                         </tr>
                       ";
                     }
@@ -96,7 +90,7 @@
   </div>
     
   <?php include 'includes/footer.php'; ?>
-  <?php include 'includes/candidates_modal.php'; ?>
+  <?php include 'includes/parties_modal.php'; ?>
 </div>
 <?php include 'includes/scripts.php'; ?>
 <script>
@@ -114,35 +108,28 @@ $(function(){
     var id = $(this).data('id');
     getRow(id);
   });
-
-  $(document).on('click', '.photo', function(e){
+  
+    $(document).on('click', '.photo', function(e){
     e.preventDefault();
     var id = $(this).data('id');
     getRow(id);
   });
-
-  $(document).on('click', '.platform', function(e){
-    e.preventDefault();
-    var id = $(this).data('id');
-    getRow(id);
-  });
+  
+  
 
 });
+
 
 function getRow(id){
   $.ajax({
     type: 'POST',
-    url: 'candidates_row.php',
+    url: 'parties_row.php',
     data: {id:id},
     dataType: 'json',
     success: function(response){
-      $('.id').val(response.canid);
-      $('#edit_firstname').val(response.firstname);
-      $('#edit_lastname').val(response.lastname);
-      $('#posselect').val(response.position_id).html(response.description);      
-      $('#edit_platform').val(response.platform);
-      $('.fullname').html(response.firstname+' '+response.lastname);
-      $('#desc').html(response.platform);
+      $('.id').val(response.id);
+      $('#edit_partyname').val(response.name);      
+      $('#edit_leader').val(response.leader);
     }
   });
 }
