@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 01, 2021 at 09:58 PM
+-- Generation Time: May 01, 2021 at 11:55 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 7.4.16
 
@@ -65,7 +65,7 @@ CREATE TABLE `candidates` (
 --
 
 INSERT INTO `candidates` (`id`, `position_id`, `firstname`, `lastname`, `photo`, `votes`, `parties_id`) VALUES
-(27, 11, 'Anirudh', 'Simhachalam', '', 0, 1),
+(27, 11, 'Anirudh', 'Simhachalam', '', 1, 1),
 (28, 11, 'cifal', 'shaul', '', 1, 2),
 (29, 11, 'Ajay', 'Nikhil', '', 0, 3),
 (30, 12, 'Sainath', 'B', '', 0, 4),
@@ -153,8 +153,8 @@ INSERT INTO `voters` (`id`, `voters_id`, `password`, `firstname`, `lastname`, `p
 (19, 'ABN4598621', '$2y$10$7teV4H/Eg5yIX.0oFjTCie2aoFOxz7ojKz9bN71e8Q5cOYAnUTiBC', 'voter1', 'V1', '', 11, 1),
 (20, 'STV2895715', '$2y$10$.UwqYj6wn6RO7imWZiIRS.7MIzOWH5QO7BHLTlx.xjNr2RhIeaFXa', 'voter2', 'V2', '', 12, 1),
 (21, 'TXK8569247', '$2y$10$5gOHi.Z53on.hmbYxPxxHO9qs8Wv94hGFH.p2Pava.gonpzftdlg6', 'voter3', 'V3', '', 13, 0),
-(22, 'WFR4521896', '$2y$10$Haf/Cez38/54LxPrwvI17.Bik9fmrmcBULgU90qyeTeJpHtVFxlEC', 'voter4', 'V4', '', 13, 0),
-(23, 'YNH4598176', '$2y$10$btbCQ5aSxUeUw51KwlFp7e/zIT7mw90.c93UE89ofKPPBQz6xHOWu', 'voter5', 'V5', '', 12, 1);
+(22, 'WFR4521896', '$2y$10$Haf/Cez38/54LxPrwvI17.Bik9fmrmcBULgU90qyeTeJpHtVFxlEC', 'voter4', 'V4', '', 14, 0),
+(23, 'YNH4598176', '$2y$10$btbCQ5aSxUeUw51KwlFp7e/zIT7mw90.c93UE89ofKPPBQz6xHOWu', 'voter5', 'V5', '', 11, 1);
 
 --
 -- Indexes for dumped tables
@@ -216,7 +216,7 @@ ALTER TABLE `parties`
 -- AUTO_INCREMENT for table `positions`
 --
 ALTER TABLE `positions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `voters`
