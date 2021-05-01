@@ -3,10 +3,10 @@
 
 	if(isset($_POST['edit'])){
 		$id = $_POST['id'];
-		$description = $_POST['description'];
-		$max_vote = $_POST['max_vote'];
+		$wardname = $_POST['wardname'];
+		$dist_name = $_POST['dist_name'];
 
-		$sql = "UPDATE positions SET description = '$description', max_vote = '$max_vote' WHERE id = '$id'";
+		$sql = "UPDATE positions SET wardname = '$wardname', dist_name = '$dist_name' WHERE id = '$id'";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Position updated successfully';
 		}

@@ -2,8 +2,8 @@
 	include 'includes/session.php';
 
 	if(isset($_POST['add'])){
-		$description = $_POST['description'];
-		$max_vote = $_POST['max_vote'];
+		$wardname = $_POST['wardname'];
+		$dist_name = $_POST['dist_name'];
 
 		$sql = "SELECT * FROM positions ORDER BY priority DESC LIMIT 1";
 		$query = $conn->query($sql);
@@ -11,7 +11,7 @@
 
 		$priority = $row['priority'] + 1;
 		
-		$sql = "INSERT INTO positions (description, max_vote, priority) VALUES ('$description', '$max_vote', '$priority')";
+		$sql = "INSERT INTO positions (wardname, dist_name, priority) VALUES ('$wardname', '$dist_name', '$priority')";
 		if($conn->query($sql)){
 			$_SESSION['success'] = 'Position added successfully';
 		}

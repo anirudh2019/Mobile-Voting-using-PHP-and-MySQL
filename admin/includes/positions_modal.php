@@ -5,22 +5,22 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Add New Position</b></h4>
+              <h4 class="modal-title"><b>Add New Poll</b></h4>
             </div>
             <div class="modal-body">
               <form class="form-horizontal" method="POST" action="positions_add.php">
                 <div class="form-group">
-                    <label for="description" class="col-sm-3 control-label">Description</label>
+                    <label for="wardname" class="col-sm-3 control-label">Ward Name</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="description" name="description" required>
+                      <input type="text" class="form-control" id="wardname" name="wardname" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="max_vote" class="col-sm-3 control-label">Maximum Vote</label>
+                    <label for="dist_name" class="col-sm-3 control-label">District Name</label>
 
                     <div class="col-sm-9">
-                      <input type="number" class="form-control" id="max_vote" name="max_vote" required>
+                      <input type="text" class="form-control" id="dist_name" name="dist_name" required>
                     </div>
                 </div>
             </div>
@@ -40,23 +40,23 @@
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title"><b>Edit Position</b></h4>
+              <h4 class="modal-title"><b>Edit Poll</b></h4>
             </div>
             <div class="modal-body">
               <form class="form-horizontal" method="POST" action="positions_edit.php">
                 <input type="hidden" class="id" name="id">
                 <div class="form-group">
-                    <label for="edit_description" class="col-sm-3 control-label">Description</label>
+                    <label for="edit_wardname" class="col-sm-3 control-label">Ward Name</label>
 
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="edit_description" name="description">
+                      <input type="text" class="form-control" id="edit_wardname" name="wardname">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="edit_max_vote" class="col-sm-3 control-label">Maximum Vote</label>
+                    <label for="edit_dist_name" class="col-sm-3 control-label">District Name</label>
 
                     <div class="col-sm-9">
-                      <input type="number" class="form-control" id="edit_max_vote" name="max_vote">
+                      <input type="text" class="form-control" id="edit_dist_name" name="dist_name">
                     </div>
                 </div>
             </div>

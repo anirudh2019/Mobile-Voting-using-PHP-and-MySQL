@@ -11,11 +11,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Positions
+        Polls
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Positions</li>
+        <li class="active">Polls</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -52,8 +52,8 @@
               <table id="example1" class="table table-bordered">
                 <thead>
                   <th class="hidden"></th>
-                  <th>Description</th>
-                  <th>Maximum Vote</th>
+                  <th>Ward Name</th>
+                  <th>District Name</th>
                   <th>Tools</th>
                 </thead>
                 <tbody>
@@ -64,8 +64,8 @@
                       echo "
                         <tr>
                           <td class='hidden'></td>
-                          <td>".$row['description']."</td>
-                          <td>".$row['max_vote']."</td>
+                          <td>".$row['wardname']."</td>
+                          <td>".$row['dist_name']."</td>
                           <td>
                             <button class='btn btn-success btn-sm edit btn-flat' data-id='".$row['id']."'><i class='fa fa-edit'></i> Edit</button>
                             <button class='btn btn-danger btn-sm delete btn-flat' data-id='".$row['id']."'><i class='fa fa-trash'></i> Delete</button>
