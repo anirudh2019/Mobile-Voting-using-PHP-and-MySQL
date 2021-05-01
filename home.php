@@ -73,7 +73,7 @@
 				        			$sql = "SELECT * FROM positions WHERE id= '".$voter['position_id']."' ";
 									$query = $conn->query($sql);
 									$row = $query->fetch_assoc();
-										$sql = "SELECT * FROM candidates WHERE position_id='".$row['id']."'";
+			$sql = "SELECT *, candidates.id AS canid FROM candidates INNER JOIN parties ON parties.id = candidates.parties_id WHERE position_id='".$row['id']."'";
 										$cquery = $conn->query($sql);
 										while($crow = $cquery->fetch_assoc()){
 											$slug = slugify($row['wardname']);
@@ -83,21 +83,21 @@
 
 												if(is_array($value)){
 													foreach($value as $val){
-														if($val == $crow['id']){
+														if($val == $crow['canid']){
 															$checked = 'checked';
 														}
 													}
 												}
 												else{
-													if($value == $crow['id']){
+													if($value == $crow['canid']){
 														$checked = 'checked';
 													}
 												}
 											}
 											
-		$input = '<input type="radio" class="flat-red '.$slug.'" name="'.slugify($row['wardname']).'" value="'.$crow['id'].'" '.$checked.'>';
+		$input = '<input type="radio" class="flat-red '.$slug.'" name="'.slugify($row['wardname']).'" value="'.$crow['canid'].'" '.$checked.'>';
 				
-		$image = (!empty($crow['photo'])) ? 'images/'.$crow['photo'] : 'images/profile.jpg';
+		$image = (!empty($crow['logo'])) ? 'images/parties/'.$crow['logo'] : 'images/favicon.png';
 				                                                 
                 $candidate .= '<li>'.$input.'<img src="'.$image.'" height="100px" width="100px" class="clist"> <span class="cname clist">'.$crow['firstname'].' '.$crow['lastname'].'</span>   </li> ';
 						

@@ -11,11 +11,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Votes
+        Election Results
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Votes</li>
+        <li class="active">Results</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -45,28 +45,35 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
-            <div class="box-header with-border">
-              <a href="#reset" data-toggle="modal" class="btn btn-danger btn-sm btn-flat"><i class="fa fa-refresh"></i> Reset</a>
-            </div>
             <div class="box-body">
               <table id="example1" class="table table-bordered">
                 <thead>
                   <th class="hidden"></th>
-                  <th>Position</th>
-                  <th>Candidate</th>
-                  <th>Voter</th>
+                  <th>logo</th>
+                  <th>Party</th>
+                  <th>Total votes count</th>
                 </thead>
                 <tbody>
                   <?php
-                    $sql = "SELECT *, candidates.firstname AS canfirst, candidates.lastname AS canlast, voters.firstname AS votfirst, voters.lastname AS votlast FROM votes LEFT JOIN positions ON positions.id=votes.position_id LEFT JOIN candidates ON candidates.id=votes.candidate_id LEFT JOIN voters ON voters.id=votes.voters_id ORDER BY positions.priority ASC";
+                    
+                    //$sql = "select parties.name, parties.logo, parties.id as partyid, candidates.id as canid, candidates.votes, candidates.parties_id from candidates inner join parties on parties.id = candidates.parties_id";
+                    $sql = "SELECT parties.id, parties.name, parties.logo FROM parties";
                     $query = $conn->query($sql);
                     while($row = $query->fetch_assoc()){
+                    $image = (!empty($row['logo'])) ? '../images/parties/'.$row['logo'] : '../images/favicon.png';        
+                    
+                    $vsql = "SELECT SUM(votes) AS value_sum FROM candidates WHERE candidates.parties_id = '".$row['id']."'";
+                    $vquery = $conn->query($vsql);            	
+                    $count = $vquery->fetch_assoc();
+                    
                       echo "
                         <tr>
                           <td class='hidden'></td>
-                          <td>".$row['description']."</td>
-                          <td>".$row['canfirst'].' '.$row['canlast']."</td>
-                          <td>".$row['votfirst'].' '.$row['votlast']."</td>
+                          <td>
+                            <img src='".$image."' width='70px' height='70px'>
+                          </td>
+                          <td>".$row['name']."</td>
+                          <td>".$count['value_sum']." </td>            
                         </tr>
                       ";
                     }
@@ -81,7 +88,6 @@
   </div>
     
   <?php include 'includes/footer.php'; ?>
-  <?php include 'includes/votes_modal.php'; ?>
 </div>
 <?php include 'includes/scripts.php'; ?>
 </body>

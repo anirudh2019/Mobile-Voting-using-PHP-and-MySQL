@@ -13,22 +13,20 @@
         			<td colspan="2" align="center" style="font-size:15px;"><b>'.$row['wardname'].'</b></td>
         		</tr>
         		<tr>
-        			<td width="80%"><b>Candidates</b></td>
+        			<td width="50%"><b>Candidates</b></td>
+        			<td width="30%"><b>Party</b></td>
         			<td width="20%"><b>Votes</b></td>
         		</tr>
         	';
 
-        	$sql = "SELECT * FROM candidates WHERE position_id = '$id' ORDER BY lastname ASC";
+        	$sql = "SELECT * FROM candidates INNER JOIN parties ON parties.id = candidates.parties_id WHERE position_id = '$id' ORDER BY firstname ASC";
     		$cquery = $conn->query($sql);
     		while($crow = $cquery->fetch_assoc()){
-    			$sql = "SELECT * FROM votes WHERE candidate_id = '".$crow['id']."'";
-      			$vquery = $conn->query($sql);
-      			$votes = $vquery->num_rows;
-
       			$contents .= '
       				<tr>
       					<td>'.$crow['firstname']." ".$crow['lastname'].'</td>
-      					<td>'.$votes.'</td>
+      					<td>'.$crow['name'].'</td>
+      					<td>'.$crow['votes'].'</td>
       				</tr>
       			';
 

@@ -100,6 +100,26 @@
                       <input type="password" class="form-control" id="edit_password" name="password">
                     </div>
                 </div>
+                
+                <div class="form-group">
+                    <label for="position" class="col-sm-3 control-label">Poll</label>
+
+                    <div class="col-sm-9">
+                      <select class="form-control" id="position" name="position" required>
+                        <option value="" selected>- Select -</option>
+                        <?php
+                          $sql = "SELECT * FROM positions";
+                          $query = $conn->query($sql);
+                          while($row = $query->fetch_assoc()){
+                            echo "
+                              <option value='".$row['id']."'>".$row['wardname']."</option>
+                            ";
+                          }
+                        ?>
+                      </select>
+                    </div>
+                </div>
+                
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default btn-flat pull-left" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
