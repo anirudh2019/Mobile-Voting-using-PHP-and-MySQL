@@ -5,7 +5,7 @@ It is an online voting web application with both user and admin modules .
 Installation : 
 
 1. Copy the downloaded folder to c:/xampp/htdocs .
-2. In PHPadmin , create a database named " vote-system" and import the "vote-system.sql" from the code file.
+2. In PHPadmin , create a database named " votesystem" and import the "votesystem.sql" from the code file.
 3. Open URL - "localhost/mobile-voting.
 
 
