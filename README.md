@@ -1,7 +1,7 @@
 # Mobile-Voting-using-PHP-and-MySQL
-Mobile Voting System is the project for DBMS.
-Our Group number is 23 : 1. S. Anirudh
-                         2. J. Cifal Shaul
+Mobile Voting System is the project for DBMS.<br><br>
+Our Group number is 23 : <br>1. S. Anirudh<br>
+                         2. J. Cifal Shaul<br>
                          3. Ch. Ajay Nikhil
 
 This is an online voting web application with both voterr and admin modules.
