@@ -1,6 +1,6 @@
 # Mobile-Voting-using-PHP-and-MySQL
 Mobile Voting System is the project for DBMS.<br><br>
-Our Group number is 23 : <br>1. S. Anirudh<br>
+Contributors : <br>1. S. Anirudh<br>
                          2. J. Cifal Shaul<br>
                          3. Ch. Ajay Nikhil
 
