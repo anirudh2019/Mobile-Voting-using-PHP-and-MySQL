@@ -1,12 +1,7 @@
-# Mobile-Voting-using-PHP-and-MySQL
-Mobile Voting System is the project for DBMS.<br><br>
-Contributors : <br>1. S. Anirudh<br>
-                         2. J. Cifal Shaul<br>
-                         3. Ch. Ajay Nikhil
+# Online-Voting-system-using-PHP-and-MySQL
 
-This is an online voting web application with both voterr and admin modules.
 
-Technologies used: PHP, MySQL, HTML, CSS, Javascript.
+
 
 Installation : 
 1. Install MySQL, PHP, Apache and Xampp.
